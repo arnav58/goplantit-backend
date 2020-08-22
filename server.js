@@ -8,8 +8,8 @@ const bodyParser = require("body-parser")
 //if there is no environment variable we will run the backend on port 5000
 const PORT = process.env.PORT || 5000;
 
-//app setup
-
+//the middleware that parse json in the request body, so we can use request.body 
+//in the apis
 app.use(express.json({extended: false}));
 
 app.listen(PORT, ()=>console.log(`SERVER STARTED ON PORT ${PORT}`))

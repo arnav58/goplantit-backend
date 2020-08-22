@@ -21,6 +21,7 @@ GoPlantIt 🌿 app aims to help farmers by providing customized suggestions for 
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 - [Express](https://expressjs.com/)
+- [JWT](https://jwt.io/)
 
 ## Get Started
 
