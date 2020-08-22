@@ -1,24 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const config = require("config");
+const { check, validationResult } = require("express-validator");
 
-//@route GET api/user
-//@desc Test route
-//@access Public
-router.get('/', (req,res) => res.send('auth route test'));
-
-//@route GET api/user
-//@desc register user
-//@access Public
-//with auth, the route is protected with the token
-router.get("/", auth, async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id).select("-password"); //return everything expect password
-      res.json(user);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
-  });
   
   //@route POST api/auth
   //@desc  authenticate user and get token
@@ -64,7 +50,7 @@ router.get("/", auth, async (req, res) => {
         }
         //Note: for security, do not indicate if the user exist in the error message
   
-        
+
         const payload = {
           user: {
             id: user.id
@@ -72,9 +58,9 @@ router.get("/", auth, async (req, res) => {
         };
         jwt.sign(
           payload,
-          config.get("token"),
+          config.get("jwtSecret"),
           {
-            expiresIn: 36000000
+            expiresIn: 36000
           }, //expiration time
           (err, token) => {
             if (err) {

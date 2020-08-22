@@ -9,10 +9,28 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../Models/User"); //The user model
 
 
+const auth = require('./middleware/auth')
+
+
 //@route GET api/user
 //@desc Test route
 //@access Public
 router.get('/test', (req,res) => res.send('user route test'));
+
+
+//@route GET api/user
+//@desc register user
+//@access Public
+//with auth, the route is protected with the token
+router.get("/", auth, async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id).select("-password"); //return everything expect password
+      res.json(user);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Server Error");
+    }
+  });
 
 //@route POST api/user
 //@desc Register user
@@ -78,10 +96,11 @@ router.post(
           id: user.id
         }
       };
-      //sign jwt with the payload the secret
+      //sign jwt with the payload the secret，allow user to be authenticated after registered·
       jwt.sign(
         payload,
-        config.get("token"),
+        //use the secret token (private key) to encrypt 
+        config.get("jwtSecret"),
         {
           expiresIn: 36000
         }, //expiration time
