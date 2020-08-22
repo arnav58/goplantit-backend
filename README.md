@@ -31,6 +31,30 @@ cd <project directory>
 npm run start
 ```
 
+## Commit message standrad
+
+[How to Write  Useful Commit Messages](https://dev.to/jacobherrington/how-to-write-useful-commit-messages-my-commit-message-template-20n9)
+
+Here is an example:
+
+```plain text
+Refactor the coupon UI
+
+Because:
+- The old UI code is fairly slow
+- There were a few unused dependencies
+- The old UI has aged poorly
+```
+
+For sure, it is a template, the second paragraph is not required if just a simple message
+
+Commit command
+
+```bash
+git commit -a -m '<Short summary of the commit>' -m '<Explaination if needed>'
+```
+
+
 ## Other Links
 
 Follow **Legendary** [Traversy Media](https://www.youtube.com/user/TechGuyWeb)
