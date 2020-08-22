@@ -24,11 +24,18 @@ GoPlantIt 🌿 app aims to help farmers by providing customized suggestions for 
 
 ## Get Started
 
-Start backend server
+Start backend server in production
 
 ```bash
 cd <project directory>
-npm run start
+npm start
+```
+
+Start backend server in development, with nodemon
+
+```bash
+cd <project directory>
+npm run server
 ```
 
 ## Commit message standrad
