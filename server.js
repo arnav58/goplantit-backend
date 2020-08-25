@@ -18,6 +18,7 @@ app.listen(PORT, ()=>console.log(`SERVER STARTED ON PORT ${PORT}`))
 //api routes
 app.use('/api/user', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/warnings', require('./routes/api/warnings'));
 
 //connect Database
 connectDB();
