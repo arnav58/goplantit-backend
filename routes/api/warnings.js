@@ -11,9 +11,13 @@ const parser = new Parser();
     // Parsing the warnings data for Victoria
     parser.parseURL('http://www.bom.gov.au/fwo/IDZ00059.warnings_vic.xml', function(err, parsed) {
 
+        // Initializing empty response array
         var warnings_data = [];
 
+        // Iterating over each rss entry
         parsed.items.forEach(function(item, index){
+
+          // Deciding the tag for the item based on the title
           var tag = "";
           if (item.title.toLowerCase().includes("flood")) {
             tag = "Flood";
@@ -27,6 +31,7 @@ const parser = new Parser();
             tag = "Severe Weather";
           }
 
+          // Re-packing all items
           warnings_data.push({
             "title": item.title,
             "link": item.link,
