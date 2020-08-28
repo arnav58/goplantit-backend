@@ -19,6 +19,18 @@ const months = {
   11: 'December'
 }
 
+function get_date_suffix(date) {
+  if (date === 1) {
+    return "st";
+  } else if (date === 2) {
+    return "nd";
+  } else if (date === 3) {
+    return "rd";
+  } else {
+    return "th";
+  }
+}
+
   //@route GET api/warnings
   //@desc  return the parsed json object of the severe weather warnings
   //@access Public
@@ -89,9 +101,9 @@ const months = {
           "title": item.title,
           "link": item.link,
           "pubDate": item.pubDate,
-          "tag": tag,
+          "tag": tag.toLowerCase(),
           "isoDate": item.isoDate,
-          "formattedDate": formatted_date.getDate() + " " + months[(formatted_date.getMonth())] + ", " + formatted_date.getFullYear()
+          "formattedDate": formatted_date.getDate() + get_date_suffix(formatted_date.getDate()) + " " + months[(formatted_date.getMonth())] + ", " + formatted_date.getFullYear()
         })
       });
 
