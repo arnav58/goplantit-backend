@@ -4,6 +4,21 @@ const router = express.Router();
 const Parser = require('rss-parser');
 const parser = new Parser();
 
+const months = {
+  0: 'January',
+  1: 'February',
+  2: 'March',
+  3: 'April',
+  4: 'May',
+  5: 'June',
+  6: 'July',
+  7: 'August',
+  8: 'September',
+  9: 'October',
+  10: 'November',
+  11: 'December'
+}
+
   //@route GET api/warnings
   //@desc  return the parsed json object of the severe weather warnings
   //@access Public
@@ -66,13 +81,17 @@ const parser = new Parser();
           tag = "Thunderstorm";
         }
 
+        // Parsing the date format
+        var formatted_date = new Date(item.isoDate);
+
         // Re-packing all items
         warnings_data.push({
           "title": item.title,
           "link": item.link,
           "pubDate": item.pubDate,
           "tag": tag,
-          "isoDate": item.isoDate
+          "isoDate": item.isoDate,
+          "formattedDate": formatted_date.getDate() + " " + months[(formatted_date.getMonth())] + ", " + formatted_date.getFullYear()
         })
       });
 
