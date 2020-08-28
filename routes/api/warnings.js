@@ -77,7 +77,7 @@ router.get("/", (req, res) => {
       // Iterating over each rss entry
       parsed.items.forEach(function (item, index) {
         // Deciding the tag for the item based on the title
-        var tag = "";
+        var tag = "alert";
         if (item.title.toLowerCase().includes("flood")) {
           tag = "Flood";
         } else if (item.title.toLowerCase().includes("frost")) {
@@ -96,6 +96,8 @@ router.get("/", (req, res) => {
           tag = "Tsunami";
         } else if (item.title.toLowerCase().includes("thunderstorm")) {
           tag = "Thunderstorm";
+        }else if (item.title.toLowerCase().includes("surf")) {
+          tag = "surf";
         }
 
         // Parsing the date format
