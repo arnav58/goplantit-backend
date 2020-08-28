@@ -31,7 +31,6 @@ router.get("/", (req, res) => {
   if (state_selected === undefined) {
     state_selected = "VIC";
   }
-
   // Deciding the feed url based on the state selected.
   var feed_url = "";
   const state_IDZ_mapping = {
