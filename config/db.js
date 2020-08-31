@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require("config");
-const db = config.get("mongoURI")
+const db = "mongodb+srv://developer:goplantit@goplantitcluster1.7gq26.mongodb.net/goplantitcluster1?retryWrites=true&w=majority";
 
 const connectDB = async () =>{
     try {
