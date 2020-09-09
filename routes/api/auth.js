@@ -57,7 +57,9 @@ const { check, validationResult } = require("express-validator");
 
         const payload = {
           user: {
-            id: user.id
+            username: user.username,
+            crop:user.crop,
+            state:user.state
           }
         };
         jwt.sign(
