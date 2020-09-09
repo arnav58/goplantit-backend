@@ -6,6 +6,8 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 
   
+
+
   //@route POST api/auth
   //@desc  authenticate user and get token
   //@access Public
@@ -13,7 +15,9 @@ const { check, validationResult } = require("express-validator");
     "/",
     [
       check("username", "A valid username is required").exists(),
-      check("password", "Password is required").exists() //check password exist
+      check("password", "Password is required").exists(), //check password exist
+      check("state", "Password is required").exists(), //check password exist
+      check("crop", "Password is required").exists() //check password exist
     ],
     async (req, res) => {
       const errors = validationResult(req);
