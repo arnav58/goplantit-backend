@@ -74,17 +74,18 @@ const checkTempRules = (temp, crop_type) => {
     conditions_ref_link = "";
 
     if(crop_type === "wheat" || crop_type === "canola"){
-        if(20 < temp <= 25) {
+        if(20 < temp  && temp <= 25) {
+            console.log(temp);
             conditions_tag = "ideal";
             conditions_color = "green";
-        } else if((17 < temp <= 20) || (25 < temp <= 28)){
+        } else if((17 < temp  && temp <= 20) || (25 < temp  && temp <= 28)){
             conditions_tag = "slightly_unfavorable";
             conditions_color = "yellow";
-        } else if((13 < temp <= 17) || (28 < temp <= 32)){
-            conditions_tag = "heat_stress";
+        } else if((13 < temp  && temp <= 17) || (28 < temp  && temp <= 32)){
+            conditions_tag = "concerning";
             conditions_color = "red";
         } else {
-            conditions_tag = "heat_shock";
+            conditions_tag = "severe";
             conditions_color = "maroon";
         }
 
@@ -94,62 +95,62 @@ const checkTempRules = (temp, crop_type) => {
             conditions_ref_link = "http://www.croppro.com.au/cb_pages/canola_crop_phenology.php#:~:text=The%20lower%20limit%2C%20or%20base,20%C2%B0%20%2D25%C2%B0%20C.";
         }
     } else if(crop_type === "barley"){
-        if(12 < temp <= 25) {
+        if(12 < temp  && temp <= 25) {
             conditions_tag = "ideal";
             conditions_color = "green";
-        } else if((10 < temp <= 12) || (25 < temp <= 28)){
+        } else if((10 < temp  && temp <= 12) || (25 < temp  && temp <= 28)){
             conditions_tag = "slightly_unfavorable";
             conditions_color = "yellow";
-        } else if((6 < temp <= 10) || (28 < temp <= 32)){
-            conditions_tag = "heat_stress";
+        } else if((6 < temp  && temp <= 10) || (28 < temp  && temp <= 32)){
+            conditions_tag = "concerning";
             conditions_color = "red";
         } else {
-            conditions_tag = "heat_shock";
+            conditions_tag = "severe";
             conditions_color = "maroon";
         }
         conditions_ref_link = "https://grdc.com.au/__data/assets/pdf_file/0020/370532/GrowNote-Barley-North-4-Physiology.pdf"
     } else if(crop_type === "sorghum"){
-        if(12 < temp <= 34) {
+        if(12 < temp  && temp <= 34) {
             conditions_tag = "ideal";
             conditions_color = "green";
-        } else if((10 < temp <= 12) || (34 < temp <= 36)){
+        } else if((10 < temp  && temp <= 12) || (34 < temp  && temp <= 36)){
             conditions_tag = "slightly_unfavorable";
             conditions_color = "yellow";
-        } else if((6 < temp <= 10) || (36 < temp <= 40)){
-            conditions_tag = "heat_stress";
+        } else if((6 < temp  && temp <= 10) || (36 < temp  && temp <= 40)){
+            conditions_tag = "concerning";
             conditions_color = "red";
         } else {
-            conditions_tag = "heat_shock";
+            conditions_tag = "severe";
             conditions_color = "maroon";
         }
         conditions_ref_link = "https://grdc.com.au/__data/assets/pdf_file/0030/370596/GrowNote-Sorghum-North-04-Physiology.pdf";
     } else if(crop_type === "rice"){
-        if(16 < temp <= 32) {
+        if(16 < temp  && temp <= 32) {
             conditions_tag = "ideal";
             conditions_color = "green";
-        } else if((14 < temp <= 16) || (32 < temp <= 34)){
+        } else if((14 < temp  && temp <= 16) || (32 < temp  && temp <= 34)){
             conditions_tag = "slightly_unfavorable";
             conditions_color = "yellow";
-        } else if((10 < temp <= 14) || (34 < temp <= 38)){
-            conditions_tag = "heat_stress";
+        } else if((10 < temp  && temp <= 14) || (34 < temp  && temp <= 38)){
+            conditions_tag = "concerning";
             conditions_color = "red";
         } else {
-            conditions_tag = "heat_shock";
+            conditions_tag = "severe";
             conditions_color = "maroon";
         }
         conditions_ref_link = "https://www.agrifutures.com.au/farm-diversity/rice/#:~:text=The%20crop%20grows%20from%20spring,negative%20impact%20on%20yield%20potential.";
     } else if(crop_type === "cotton"){
-        if(27 < temp <= 32) {
+        if(27 < temp  && temp <= 32) {
             conditions_tag = "ideal";
             conditions_color = "green";
-        } else if((25 < temp <= 27) || (32 < temp <= 34)){
+        } else if((25 < temp  && temp <= 27) || (32 < temp  && temp <= 34)){
             conditions_tag = "slightly_unfavorable";
             conditions_color = "yellow";
-        } else if((21 < temp <= 25) || (34 < temp <= 36)){
-            conditions_tag = "heat_stress";
+        } else if((21 < temp  && temp <= 25) || (34 < temp  && temp <= 36)){
+            conditions_tag = "concerning";
             conditions_color = "red";
         } else {
-            conditions_tag = "heat_shock";
+            conditions_tag = "severe";
             conditions_color = "maroon";
         }
         conditions_ref_link = "https://irec.org.au/wp-content/uploads/Australian-Cotton-Production-Manual-2018.pdf";
