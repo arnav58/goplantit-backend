@@ -16,17 +16,17 @@ const checkWindSpeedRules = (wind_speed) => {
             wind_speed_threat: "green",
             wind_speed_threat_desc: "No threat of lodging because of wind speed."
         }
-    } else if(9 < wind_speed <= 11) {
+    } else if(9 < wind_speed && wind_speed <= 11) {
         return {
             wind_speed_threat: "yellow",
             wind_speed_threat_desc: "Lodging severity Level 2 threat."
         }
-    } else if(11 < wind_speed <= 15) {
+    } else if(11 < wind_speed && wind_speed <= 15) {
         return {
             wind_speed_threat: "orange",
             wind_speed_threat_desc: "Lodging severity Level 3 threat."
         }
-    } else if(15 < wind_speed <= 21) {
+    } else if(15 < wind_speed && wind_speed <= 21) {
         return {
             wind_speed_threat: "red",
             wind_speed_threat_desc: "Lodging severity Level 4 threat."
@@ -45,17 +45,17 @@ const checkRainRules = (rain) => {
             rain_threat: "green",
             rain_threat_desc: "No threat of lodging because of wind speed."
         }
-    } else if(7 < rain <= 21) {
+    } else if(7 < rain && rain <= 21) {
         return {
             rain_threat: "yellow",
             rain_threat_desc: "Lodging severity Level 2 threat."
         }
-    } else if(21 < rain <= 59) {
+    } else if(21 < rain && rain <= 59) {
         return {
             rain_threat: "orange",
             rain_threat_desc: "Lodging severity Level 3 threat."
         }
-    } else if(59 < rain <= 120) {
+    } else if(59 < rain && rain <= 120) {
         return {
             rain_threat: "red",
             rain_threat_desc: "Lodging severity Level 4 threat."
