@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const { response } = require("express");
 
-const Parser = require("rss-parser");
-const e = require("express");
-const parser = new Parser();
 
 //@route GET api/misc/location
 //@desc get suburb, postcode in Australia
 //@access Public
-router.get('location', (req, res) => {
+router.get('/location', (req, res) => {
     const locations =require('../api/data/locations.json')
+    console.log(locations[0])
     res.send(locations)
 });
+
+module.exports = router;
