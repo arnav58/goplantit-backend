@@ -15,11 +15,8 @@ app.use('/api/user', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/warnings', require('./routes/api/warnings'));
 app.use('/api/weather_data', require('./routes/api/weather'));
-<<<<<<< HEAD
 app.use('/api/misc', require('./routes/api/misc'));
-=======
 app.use('/api/yields_data', require('./routes/api/yields'));
->>>>>>> 680782fadb78ec7df97c0cd2e2e8ae3ecb6eb4dd
 
 app.listen(PORT, ()=>console.log(`SERVER STARTED ON PORT ${PORT}`))
 //api routes
