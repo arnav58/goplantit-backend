@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const xlsxFile = require('read-excel-file/node');
-const { ValidationHalt } = require("express-validator/src/base");
 var crop_type_list = ["wheat", "barley", "canola", "sorghum", "cotton", "rice"];
 var states = ["NSW", "VIC", "QLD", "SA", "WA", "TAS"];
 
