@@ -29,6 +29,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.0",
     "nodemon": "^2.0.4",
+<<<<<<< HEAD
+=======
+    "read-excel-file": "^4.0.7",
+>>>>>>> 680782fadb78ec7df97c0cd2e2e8ae3ecb6eb4dd
     "rss-parser": "^3.9.0"
   },
   "devDependencies": {
