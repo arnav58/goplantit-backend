@@ -8,7 +8,6 @@ const { response } = require("express");
 //@access Public
 router.get('/location', (req, res) => {
     const locations =require('../api/data/locations.json')
-    console.log(locations[0])
     res.send(locations)
 });
 
