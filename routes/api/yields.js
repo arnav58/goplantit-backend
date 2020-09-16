@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const xlsxFile = require('read-excel-file/node');
+const { ValidationHalt } = require("express-validator/src/base");
 var crop_type_list = ["wheat", "barley", "canola", "sorghum", "cotton", "rice"];
 var states = ["NSW", "VIC", "QLD", "SA", "WA", "TAS"];
 
@@ -44,6 +45,40 @@ async function getCropYieldData(crop_type, land_area){
     return yields_data;
 };
 
+const getValuesInList = (yields_data, crop_type, key) => {
+    var val = [];
+
+    yields_data[crop_type].forEach((crop_data) => {
+        val.push(crop_data[key]);
+    });
+
+    return val;
+};
+
+const getFormattedHighchartsData = (yields_data) => {
+    var highcharts_data = {};
+
+    states.forEach((state) => {
+        var state_obj = {};
+        var series_data = [];
+
+        crop_type_list.forEach((crop_type) => {  
+            var series_obj = {};
+            series_obj["name"] = crop_type;
+            series_obj["data"] = getValuesInList(yields_data, crop_type, state);
+            
+            series_data.push(series_obj);
+        });
+
+        state_obj["x_axis"] = getValuesInList(yields_data, "rice", "Year");
+        state_obj["series"] = series_data;
+
+        highcharts_data[state] = state_obj;
+    });
+
+    return highcharts_data;
+};
+
 router.get("/", (req, res) => {
     var crop_yields_data = {};
     const land_area = req.query.area;
@@ -53,7 +88,7 @@ router.get("/", (req, res) => {
             crop_yields_data[crop_type] = data
 
             if(crop_type === crop_type_list[crop_type_list.length - 1]){
-                res.send(crop_yields_data);
+                res.send(getFormattedHighchartsData(crop_yields_data));
             }
         });
     });
