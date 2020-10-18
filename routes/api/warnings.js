@@ -54,7 +54,7 @@ router.get("/", (req, res) => {
   parser.parseURL(feed_url, function (err, parsed) {
     // Initializing empty response array
     var warnings_data = [];
-  
+
     if (parsed === undefined) {
       console.log(err)
       res.json({
@@ -70,7 +70,7 @@ router.get("/", (req, res) => {
         } else if (item.title.toLowerCase().includes("frost")) {
           tag = "Frost";
         } else if (item.title.toLowerCase().includes("sheep")) {
-          tag = "Sheep";
+          tag = "ignore";
         } else if (item.title.toLowerCase().includes("wind")) {
           tag = "Wind";
         } else if (item.title.toLowerCase().includes("severe weather")) {
@@ -83,22 +83,24 @@ router.get("/", (req, res) => {
           tag = "Tsunami";
         } else if (item.title.toLowerCase().includes("thunderstorm")) {
           tag = "Thunderstorm";
-        }else if (item.title.toLowerCase().includes("surf")) {
-          tag = "surf";
+        } else if (item.title.toLowerCase().includes("surf")) {
+          tag = "ignore";
         }
 
         // Parsing the date format
         var formatted_date = new Date(item.isoDate);
 
-        // Re-packing all items
-        warnings_data.push({
-          title: item.title,
-          link: item.link,
-          pubDate: item.pubDate,
-          tag: tag,
-          isoDate: item.isoDate,
-          formattedDate: helper_functions.getFormattedDate(formatted_date),
-        });
+        if (tag !== "ignore") {
+          // Re-packing all items
+          warnings_data.push({
+            title: item.title,
+            link: item.link,
+            pubDate: item.pubDate,
+            tag: tag,
+            isoDate: item.isoDate,
+            formattedDate: helper_functions.getFormattedDate(formatted_date),
+          });
+        }
       });
 
       // Returning the json array of all warnings issued.
